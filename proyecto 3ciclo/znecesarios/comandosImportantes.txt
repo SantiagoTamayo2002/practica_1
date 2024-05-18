@@ -1,0 +1,40 @@
+para dar privilegios temporales: 
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+
+
+                                Problematica
+Se requiere un sistema que permita hacer retenciones de una factura emitida 
+por una persona, para ello se debe tener en cuenta que se retiene el 8% para
+facturas con ruc educativo y 10% para facturas con ruc profesional.
+Además se debe guardar un historial de todas las retenciones emitidas
+
+
+  +---------------------------------+        +-----------------------------------+
+  |             Factura             |        |            Retención               |
+  +---------------------------------+        +-----------------------------------+
+  | - numero_factura: int           |        | - id_retencion: int                |
+  | - ruc_emisor: string            |        | - monto_retenido: float            |
+  | - monto_total: float            |        | - tipo_ruc: string                 |
+  | - fecha_emision: date           |        | - fecha_retencion: date            |
+  +---------------------------------+        +-----------------------------------+
+  | + obtener_tipo_ruc(): string    |        | + guardar_en_historial(): void     |
+  | + calcular_retencion(): float   |        +-----------------------------------+
+  +---------------------------------+                    ^
+           ^                                              |
+           |                                              |
+           |                                              |
+           |                                              |
+           |                                              |
+           +----------------------------------------------+
+                           |
+                           |
+                           |
+                           v
+  +---------------------------------+
+  |     HistorialRetenciones        |
+  +---------------------------------+
+  | - retenciones_realizadas: list  |
+  +---------------------------------+
+  | + agregar_retencion(): void     |
+  | + consultar_retenciones(): list |
+  +---------------------------------+
