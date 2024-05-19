@@ -2,9 +2,8 @@ from datetime import datetime
 from models.persona import Persona
 
 class Factura():
-    def __init__(self, id: str, fecha: datetime, cliente: Persona, rucType: str, total: float):
+    def __init__(self, id: str, cliente: Persona, rucType: str, total: float):
         self.__id = id
-        self.__fecha = fecha
         self.__cliente = cliente
         self.__ructype = rucType
         self.__total = total
@@ -57,7 +56,6 @@ class Factura():
     def serializer(self):
         return{
             "id": self.__id,
-            "fecha": self.__fecha,
             "cliente": self.__cliente.serializer(),
             "rucType": self.__ructype,
             "total": self.__total,
@@ -65,8 +63,11 @@ class Factura():
     
     def deserializer(self, data: dict):
         self.__id = data["id"]
-        self.__fecha = data["fecha"]
         self.__cliente = Persona.serializer(data["cliente"])
         self.__ructype = data["rucType"]
         self.__total = data["total"]
 
+    #funcion para generar id de factura desde cero incrementados en 1
+    def generar_id(self):
+        self.__id = str(int(self.__id) + 1)
+        return self.__id

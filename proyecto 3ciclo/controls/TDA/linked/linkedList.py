@@ -26,7 +26,7 @@ class Linked_List(object):
        node = self.__head
        data = ''
        while node != None:
-            data += str(node._data)+ '    '
+            data += str(node._data)+ '    ' + '\n'
             node = node._next
        print(data) 
     

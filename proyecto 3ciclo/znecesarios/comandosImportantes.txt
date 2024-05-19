@@ -1,6 +1,9 @@
 para dar privilegios temporales: 
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
+para activar el entorno virtual
+virtual\Scripts\activate
+
 
                                 Problematica
 Se requiere un sistema que permita hacer retenciones de una factura emitida 
