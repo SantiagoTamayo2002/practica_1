@@ -1,0 +1,41 @@
+[
+    {
+        "retencion": 23.4,
+        "factura": {
+            "id": "3",
+            "cliente": {
+                "nombre": "Maria",
+                "apellido": "Gonzales",
+                "identificacion": "0987654321"
+            },
+            "rucType": "profesional",
+            "total": 234.0
+        }
+    },
+    {
+        "retencion": 18.72,
+        "factura": {
+            "id": "2",
+            "cliente": {
+                "nombre": "Juan",
+                "apellido": "Perez",
+                "identificacion": "1234567890"
+            },
+            "rucType": "educativo",
+            "total": 234.0
+        }
+    },
+    {
+        "retencion": 23.4,
+        "factura": {
+            "id": "1",
+            "cliente": {
+                "nombre": "Juan",
+                "apellido": "Perez",
+                "identificacion": "1234567890"
+            },
+            "rucType": "profesional",
+            "total": 234.0
+        }
+    }
+]

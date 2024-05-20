@@ -1,5 +1,4 @@
 from datetime import datetime
-import json
 
 class Retencion():
     def __init__(self):
@@ -39,16 +38,22 @@ class Retencion():
             retencion = factura._total * 0.08
         elif factura._ructype == "profesional":
             retencion = factura._total * 0.10
-        return round(retencion, 2)
-
-    def generar_retencion(self, factura):
-        from models.historial import Historial  
-        if self.__historial_retenciones is None:
-            self.__historial_retenciones = Historial()
-        retencion = self.calcular_retencion(factura)
-        fecha = datetime.now().strftime("%Y-%m-%d")
-        identificador = self.__contador_id  # Utilizamos el contador como identificador
-        self.__contador_id += 1  # Incrementamos el contador para el próximo identificador
-        self.__historial_retenciones.push({"N. retenciòn": identificador,"fecha": fecha, "retencion": retencion})
-        print(f"Retencion generada: {retencion}")
-
+        else:
+            print("tipo de ruc no válido")
+            return None
+        
+        # Creamos un diccionario con las retenciones y la información de la factura
+        retencion_info = {
+            "retencion": round(retencion, 2),
+            "factura": factura.serializer()
+        }
+        return retencion_info
+    
+    
+    def to_dictionary(self):
+        retencion_dict = {
+            "fecha": self.__fecha,
+            "contador_id": self.__contador_id,
+            "historial_retenciones": self.__historial_retenciones
+        }
+        return retencion_dict

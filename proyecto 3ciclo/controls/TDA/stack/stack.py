@@ -18,3 +18,6 @@ class Stack:
     @property
     def verify(self):
         return self.__stack.verifyTop
+    
+    def is_empty(self):
+        return self.__stack.isEmpty
